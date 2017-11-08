@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Hogan Module: People
  * Plugin URI: https://github.com/dekodeinteraktiv/hogan-people
- * Description: People for Hogan
+ * Description: People Module for Hogan
  * Version: 1.0.0-dev
  * Author: Dekode
  * Author URI: https://dekode.no
