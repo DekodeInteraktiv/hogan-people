@@ -124,5 +124,12 @@ if ( ! class_exists( '\\Dekode\\Hogan\\People' ) ) {
 
 			parent::load_args_from_layout_content( $content );
 		}
+
+		/**
+		 * Validate module content before template is loaded.
+		 */
+		public function validate_args() {
+			return true; //TODO: Validate
+		}
 	}
 }
