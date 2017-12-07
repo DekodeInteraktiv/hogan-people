@@ -4,9 +4,13 @@
  *
  * $this is an instance of the People object.
  *
+ * Available properties:
+ * $this->items (array) People items.
+ *
  * @package Hogan
  */
 
+declare( strict_types = 1 );
 namespace Dekode\Hogan;
 
 if ( ! defined( 'ABSPATH' ) || ! ( $this instanceof People ) ) {

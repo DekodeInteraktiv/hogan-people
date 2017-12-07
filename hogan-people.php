@@ -2,20 +2,22 @@
 /**
  * Plugin Name: Hogan Module: People
  * Plugin URI: https://github.com/dekodeinteraktiv/hogan-people
+ * GitHub Plugin URI: https://github.com/dekodeinteraktiv/hogan-people
  * Description: People Module for Hogan
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Dekode
  * Author URI: https://dekode.no
  * License: GPL-3.0
  * License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
  *
- * * Text Domain: hogan-people
+ * Text Domain: hogan-people
  * Domain Path: /languages/
  *
  * @package Hogan
  * @author Dekode
  */
 
+declare( strict_types = 1 );
 namespace Dekode\Hogan\People;
 
 if ( ! defined( 'ABSPATH' ) ) {
