@@ -45,7 +45,20 @@ if ( ! class_exists( '\\Dekode\\Hogan\\People' ) && class_exists( '\\Dekode\\Hog
 		 *
 		 * @return array $fields Fields for this module
 		 */
-		public function get_fields() : array {
+		public function get_fields(): array {
+
+			$constraints_defaults = [
+				'min_width'  => '',
+				'min_height' => '',
+				'max_width'  => '',
+				'max_height' => '',
+				'min_size'   => '',
+				'max_size'   => '',
+				'mime_types' => '.jpg',
+			];
+
+			// Merge $args from filter with $defaults
+			$constraints_args = wp_parse_args( apply_filters( 'hogan/module/people/image/constraints', [] ), $constraints_defaults );
 
 			return [
 				[
@@ -62,15 +75,21 @@ if ( ! class_exists( '\\Dekode\\Hogan\\People' ) && class_exists( '\\Dekode\\Hog
 							'label'         => __( 'Image', 'hogan-people' ),
 							'name'          => 'image',
 							'type'          => 'image',
-							'required'      => 1,
-							'wrapper'       => array(
+							'instructions'  => apply_filters( 'hogan/module/people/image/instructions', __( 'Allowed file types: .jpg', 'hogan-people' ) ),
+							'required'      => apply_filters( 'hogan/module/people/image/required', 1 ),
+							'wrapper'       => [
 								'width' => '30',
-								'class' => '',
-								'id'    => '',
-							),
+							],
 							'return_format' => 'array',
 							'preview_size'  => 'thumbnail',
 							'library'       => 'all',
+							'min_width'     => $constraints_args['min_width'],
+							'min_height'    => $constraints_args['min_height'],
+							'max_width'     => $constraints_args['max_width'],
+							'max_height'    => $constraints_args['max_height'],
+							'min_size'      => $constraints_args['min_size'],
+							'max_size'      => $constraints_args['max_size'],
+							'mime_types'    => $constraints_args['mime_types'],
 						],
 						[
 							'key'      => $this->field_key . '_items_name',
@@ -78,22 +97,18 @@ if ( ! class_exists( '\\Dekode\\Hogan\\People' ) && class_exists( '\\Dekode\\Hog
 							'name'     => 'name',
 							'type'     => 'text',
 							'required' => 1,
-							'wrapper'  => array(
+							'wrapper'  => [
 								'width' => '35',
-								'class' => '',
-								'id'    => '',
-							),
+							],
 						],
 						[
 							'key'     => $this->field_key . '_items_position',
 							'label'   => __( 'Position', 'hogan-people' ),
 							'name'    => 'position',
 							'type'    => 'text',
-							'wrapper' => array(
+							'wrapper' => [
 								'width' => '35',
-								'class' => '',
-								'id'    => '',
-							),
+							],
 						],
 						[
 							'key'          => $this->field_key . '_items_description',
@@ -130,7 +145,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\People' ) && class_exists( '\\Dekode\\Hog
 		 *
 		 * @return bool Whether validation of the module is successful / filled with content.
 		 */
-		public function validate_args() : bool {
+		public function validate_args(): bool {
 			return ! empty( $this->items );
 		}
 	}
