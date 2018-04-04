@@ -4,7 +4,7 @@
  * Plugin URI: https://github.com/dekodeinteraktiv/hogan-people
  * GitHub Plugin URI: https://github.com/dekodeinteraktiv/hogan-people
  * Description: People Module for Hogan
- * Version: 1.0.2
+ * Version: 1.0.3
  * Author: Dekode
  * Author URI: https://dekode.no
  * License: GPL-3.0
@@ -36,9 +36,11 @@ function hogan_load_textdomain() {
 
 /**
  * Register module in Hogan
+ *
+ * @param \Dekode\Hogan\Core $core Hogan Core instance.
+ * @return void
  */
-function hogan_register_module() {
-	// Include people and register module class.
+function hogan_register_module( \Dekode\Hogan\Core $core ) {
 	require_once 'class-people.php';
-	\hogan_register_module( new \Dekode\Hogan\People() );
+	$core->register_module( new \Dekode\Hogan\People() );
 }
