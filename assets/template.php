@@ -31,7 +31,7 @@ if ( ! defined( 'ABSPATH' ) || ! ( $this instanceof People ) ) {
 				echo '<div class="name">' . $item['name'] . '</div>';
 				echo ! empty( $item['position'] ) ? '<div class="position">' . $item['position'] . '</div>' : '';
 
-				do_action( 'hogan/module/people/before_description' );
+				do_action( 'hogan/module/people/before_description', $item );
 				?>
 				<div class="description"
 					 aria-expanded="false"><?php echo wp_kses_post( $item['description'] ); ?></div>
